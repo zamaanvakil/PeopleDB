@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<title>People DB</title>
+
+</head>
+<body style="background-image:url('database.jpg'); background-attachment: fixed; color: white">
+	<div class="container" ng-controller="AppCtrl">
+		<h1>People Database</h1>
+		<table class="table">
+			<thead>
+				<th>Name</th>
+				<th>Age</th>
+				<th>Gender</th>
+				<th>Mobile Number</th>
+				<th>Action</th>
+				<th></th>
+				<th></th>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input class="form-control" ng-model="data.name"></td>
+					<td><input class="form-control" type="number" ng-model="data.age"></td>
+					<td><input class="form-control" ng-model="data.gender"></td>
+					<td><input class="form-control" ng-model="data.mobile_number"></td>
+					<td><button class="btn btn-primary" ng-click="addData()">Add to DB</button></td>
+					<td><button class="btn btn-info" ng-click="update()">Update</button></td>
+					<td><button class="btn btn-info" ng-click="deselect()">Clear</button></td>
+				</tr>
+				<tr ng-repeat="data in peopledb">
+					<td>{{data.name}}</td>
+					<td>{{data.age}}</td>
+					<td>{{data.gender}}</td>
+					<td>{{data.mobile_number}}</td>
+					<td><button class="btn btn-danger" ng-click="remove(data._id)">Remove</button>
+					<td><button class="btn btn-warning" ng-click="edit(data._id)" style="color: white">Edit</button></td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="controllers/controller.js"></script>
+</body>
+</html>
